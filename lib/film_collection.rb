@@ -25,8 +25,8 @@ class FilmCollection
   end
 
   def show_directors
-    director.map.with_index do |director, index|
-      "#{index + 1}: #{director}"
+    director.map.with_index(1) do |director, index|
+      "#{index}: #{director}"
     end
   end
 end

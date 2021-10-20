@@ -1,11 +1,11 @@
 require_relative 'lib/film'
 require_relative 'lib/film_collection'
-require_relative 'lib/parser'
+require_relative 'lib/wiki_parser'
 
 puts 'Программа "Фильм на вечер'
 puts
 
-collection_from_xpath = Parser.parse_films
+collection_from_xpath = WikiParser.parse_films
 
 collection = FilmCollection.from_wiki_top_250(collection_from_xpath)
 
@@ -18,5 +18,4 @@ director = collection.director[user_input]
 film_to_watch = collection.choice_director(director)
 puts
 puts 'Сегодня вечером рекомендую посмотреть:'
-puts
 puts film_to_watch.sample
