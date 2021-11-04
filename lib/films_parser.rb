@@ -1,5 +1,6 @@
-module VideoParser
-  URL = URI.escape('https://ru.wikipedia.org/wiki/250_лучших_фильмов_по_версии_IMDb')
+module FilmsParser
+  FILMS_FROM_WIKI = 'https://ru.wikipedia.org/wiki/250_лучших_фильмов_по_версии_IMDb'
+  URL = URI.escape(FILMS_FROM_WIKI)
 
   def self.films
     doc = Nokogiri::HTML(URI.open(URL, &:read))

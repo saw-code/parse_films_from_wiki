@@ -1,19 +1,20 @@
-require_relative 'film'
 require 'nokogiri'
 require 'open-uri'
+require_relative 'film'
+require_relative 'films_parser'
 
 class FilmCollection
   attr_reader :collection
 
-  def initialize(collection)
-    @collection = collection
-  end
-
-  def self.from_wiki_top_250(collection_from_xpath)
-    collection = collection_from_xpath.map do |line|
+  def self.films_collection
+    collection = FilmsParser.films.map do |line|
       Film.new(line[0], line[2], line[1])
     end
     new(collection)
+  end
+
+  def initialize(collection)
+    @collection = collection
   end
 
   def director

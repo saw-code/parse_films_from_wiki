@@ -1,13 +1,11 @@
 require_relative 'lib/film'
 require_relative 'lib/film_collection'
-require_relative 'lib/video_parser'
+require_relative 'lib/films_parser'
 
 puts 'Программа "Фильм на вечер'
 puts
 
-collection_from_xpath = VideoParser.films
-
-collection = FilmCollection.from_wiki_top_250(collection_from_xpath)
+collection = FilmCollection.films_collection
 
 puts collection.show_directors
 puts
