@@ -5,7 +5,7 @@ require_relative 'lib/films_parser'
 puts 'Программа "Фильм на вечер'
 puts
 
-collection = FilmCollection.films_collection
+collection = FilmsParser.films_from_wiki
 
 puts collection.show_directors
 puts
