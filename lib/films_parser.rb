@@ -8,11 +8,11 @@ module FilmsParser
     url = URI.escape(WIKI_URL)
     doc = Nokogiri::HTML(URI.open(url, &:read))
 
-    collection = doc.css('#mw-content-text div table tbody td').map do |i|
-      i.text.chomp
-    end.each_slice(5).map { |i| i[1...-1] }.map do |line|
-      Film.new(line[0], line[2], line[1])
-    end
-    FilmCollection.new(collection)
+    films =
+      doc.css('#mw-content-text div table tbody tr')[1..-1].map do |tr|
+        data = tr.css('td').map { |td| td.text.strip }
+        Film.new(data[1], data[3], data[2])
+      end
+    FilmCollection.new(films)
   end
 end
